@@ -66,6 +66,10 @@ def menu():
 def clear():
     os.system("clear")
 
+def clear_main():
+    os.system("clear")
+    main()
+
 def ping():
     os.system("ping " + str(destination))
     main()
@@ -128,7 +132,7 @@ def main():
     if command == 'help':
         helpme()
     if command == 'clear':
-        clear()
+        clear_main()
     if command == 'exit':
         exit_fun()
     if command[0:6] == 'cowsay':
