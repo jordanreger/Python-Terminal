@@ -66,10 +66,6 @@ def menu():
 def clear():
     os.system("clear")
 
-def ls():
-    os.system("ls")
-    main()
-
 def ping():
     os.system("ping " + str(destination))
     main()
@@ -81,12 +77,11 @@ def helpme():
 |  Commands!  |
 |_____________|
 |  1)clear    |
-|  2)ls       |
-|  3)ping     |
-|  4)login    |
-|  5)cowsay   |
-|  6)clear    |
-|  7)It-crowd |
+|  2)ping     |
+|  3)login    |
+|  4)cowsay   |
+|  5)clear    |
+|  6)It-crowd |
 |_____________|""")
     print("Press Ctr c to exit")
     main()
