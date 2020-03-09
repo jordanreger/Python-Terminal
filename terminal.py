@@ -18,6 +18,7 @@ def login():
       print("Logged in...\n")
       time.sleep(0.25)
       clear()
+      main()
     else:
       print("Invalid password.")
       time.sleep(1)
@@ -57,9 +58,6 @@ def menu():
   elif(userInput.lower() == 'sign up'):
     new_user()
 
-def clear():
-    os.system("clear")
-
 # </login>
 
 
@@ -67,7 +65,6 @@ def clear():
 
 def clear():
     os.system("clear")
-    main()
 
 def ls():
     os.system("ls")
