@@ -1,3 +1,2 @@
 # Python-Terminal
-## Really "crappy" terminal with a really good login system...
 Made by Brendan Doyle and Jordan Reger.
