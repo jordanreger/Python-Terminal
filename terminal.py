@@ -145,8 +145,6 @@ def main():
         global destination
         destination = command[5::]
         ping()
-    if command == 'ls':
-        ls()
     if command == 'login':
         print()
         login()
