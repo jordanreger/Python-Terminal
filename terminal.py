@@ -1,4 +1,4 @@
-import json, hashlib, os, time, sys
+import json, hashlib, os, time, sys, getpass
 
 # <login>
 
@@ -11,7 +11,7 @@ def login():
   username = username.encode('utf-8')
   userhash = hashlib.sha256(username).hexdigest()
   if(userhash == user_dict['username']):
-    password = input("Password: ")
+    password = getpass.getpass("Password: ")
     password = password.encode('utf-8')
     passhash = hashlib.sha256(password).hexdigest()
     if(passhash == user_dict['password']):
@@ -30,7 +30,7 @@ def new_user():
   username = input("Username: ")
 
   if(os.path.exists(f'{username}.json') != True):
-    password = input("Password: ")
+    password = getpass.getpass("Password: ")
     if(username != '' and password != ''):
       with open(f'{username}.json', 'w+') as file:
         username = username.encode('utf-8')
@@ -86,6 +86,9 @@ def helpme():
 |  4)cowsay   |
 |  5)clear    |
 |  6)It-crowd |
+|  99)delete  |
+|     account |
+|  (enter 99) |
 |_____________|""")
     print("Press Ctr c to exit")
     main()
@@ -109,6 +112,11 @@ def cowsay():
     print("                ``     ``      ")
     main()
 
+def delete_account():
+  os.remove(f'{username}.json')
+  print("Account deleted.")
+  exit_fun()
+
 def exit_fun():
   sys.exit()
 
@@ -121,6 +129,8 @@ def main():
     command = input(definput)
     if command == '':
         main()
+    if command == 'python':
+      print("Python doesn't work yet lolz")
     if command == 'cowsay':
         print("cowsay command requires --[quote] or arg --[message] ")
         main()
@@ -135,6 +145,11 @@ def main():
         clear_main()
     if command == 'exit':
         exit_fun()
+    if command == 'delete':
+        delete_account()
+
+    #cowsay
+
     if command[0:6] == 'cowsay':
         global message
         quotes = ["Be yourself; everyone else is already taken.","Be the change that you wish to see in the world.", "Live as if you were to die tomorrow. Learn as if you were to live forever.", "We are all in the gutter, but some of us are looking at the stars.", "Life isn't about finding yourself. Life is about creating yourself.", "Do what you can, with what you have, where you are.", "A person's a person, no matter how small.", "Happiness is not something ready made. It comes from your own actions.", "Peace begins with a smile.", "Whatever you are, be a good one.", "Two wrongs don't make a right, but they make a good excuse.", "If my life is going to mean anything, I have to live it myself.", "Always do what you are afraid to do.", "Pain is inevitable. Suffering is optional.", "Talent hits a target no one else can hit. Genius hits a target no one else can see.", "Turn your wounds into wisdom."]
@@ -145,6 +160,7 @@ def main():
             cowsay()
         else:
             cowsay()
+
     if command[0:4] == 'ping':
         global destination
         destination = command[5::]
