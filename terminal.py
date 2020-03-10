@@ -45,6 +45,7 @@ def new_user():
 
         file.write(json.dumps(user_json, indent=4))
         file.close()
+        menu()
   else:
     print("Username taken.")
     time.sleep(1)
@@ -86,11 +87,10 @@ def helpme():
 |  4)cowsay   |
 |  5)clear    |
 |  6)It-crowd |
-|  99)delete  |
-|     account |
-|  (enter 99) |
-|_____________|""")
-    print("Press Ctr c to exit")
+|  7)delete   |
+|    account  |
+|_____________|
+""")
     main()
 
 def cowsay():
@@ -113,6 +113,8 @@ def cowsay():
     main()
 
 def delete_account():
+  file = open('cache.txt', 'r')
+  username = file.read()
   os.remove(f'{username}.json')
   print("Account deleted.")
   exit_fun()
